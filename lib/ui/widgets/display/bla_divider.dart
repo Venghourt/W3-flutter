@@ -7,10 +7,6 @@ class BlaDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Divider(
-      height: 1,
-      thickness: 1,
-      color: BlaColors.greyLight,
-    );
+    return Divider(height: 1, thickness: 1, color: BlaColors.greyLight);
   }
 }

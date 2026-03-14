@@ -1,20 +1,22 @@
+
 import 'package:flutter/material.dart';
-import 'screens/ride_pref/ride_pref_screen.dart';
-import 'theme/theme.dart';
+import 'ui/screens/home/home_screen.dart';
+import 'ui/theme/theme.dart';
 
 void main() {
-  runApp(const MyApp());
+   runApp(const BlaBlaApp()); 
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+
+class BlaBlaApp extends StatelessWidget {
+  const BlaBlaApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: appTheme,
-      home: Scaffold(body: RidePrefScreen()),
+      theme: blaTheme,
+      home: Scaffold(body: HomeScreen()),
     );
   }
 }

@@ -1,10 +1,10 @@
-
 import 'package:intl/intl.dart';
 
 ////
 //// Utility class for formatting DateTime objects into human-readable strings.
 ////
 class DateTimeUtils {
+  
   static String formatDateTime(DateTime dateTime) {
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);

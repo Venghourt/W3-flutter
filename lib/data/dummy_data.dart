@@ -56,38 +56,38 @@ const List<Location> fakeLocations = [
 ];
 
 // Fake Ride Preferences
-List<RidePref> fakeRidePrefs = [
-  RidePref(
+List<RidePreference> fakeRidePrefs = [
+  RidePreference(
     departure: fakeLocations[0], // London
     departureDate: DateTime.now().add(Duration(days: 1)), // Tomorrow
     arrival: fakeLocations[3], // Paris
     requestedSeats: 2,
   ),
-  RidePref(
+  RidePreference(
     departure: fakeLocations[1], // Manchester
     departureDate: DateTime.now().add(Duration(days: 7)), // Next week
     arrival: fakeLocations[4], // Lyon
     requestedSeats: 3,
   ),
-  RidePref(
+  RidePreference(
     departure: fakeLocations[2], // Birmingham
     departureDate: DateTime.now(), // Today
     arrival: fakeLocations[5], // Marseille
     requestedSeats: 1,
   ),
-  RidePref(
+  RidePreference(
     departure: fakeLocations[0], // London
     departureDate: DateTime.now().add(Duration(days: 1)), // Tomorrow
     arrival: fakeLocations[3], // Paris
     requestedSeats: 2,
   ),
-  RidePref(
+  RidePreference(
     departure: fakeLocations[4], // Manchester
     departureDate: DateTime.now().add(Duration(days: 7)), // Next week
     arrival: fakeLocations[0], // Lyon
     requestedSeats: 3,
   ),
-  RidePref(
+  RidePreference(
     departure: fakeLocations[5], // Birmingham
     departureDate: DateTime.now(), // Today
     arrival: fakeLocations[1], // Marseille
@@ -147,36 +147,108 @@ List<User> fakeUsers = [
   ),
 ];
 
+
 // Fake  Rides
+ List<Ride> fakeRides = [
+  Ride(
+    departureLocation: fakeLocations[0], // London
+    departureDate: DateTime.now().add(Duration(hours: 3)),
+    arrivalLocation: fakeLocations[19], // Paris
+    arrivalDateTime: DateTime.now().add(Duration(hours: 8)),
+    driver: fakeUsers[0],
+    availableSeats: 2,
+    pricePerSeat: 25.0,
+  ),
 
-List<Ride> fakeRides = List.generate(50, (index) {
-  // Select random locations for departure & arrival (ensuring they are different)
-  Location departureLocation =
-      fakeLocations[random.nextInt(fakeLocations.length)];
-  Location arrivalLocation;
-  do {
-    arrivalLocation = fakeLocations[random.nextInt(fakeLocations.length)];
-  } while (departureLocation == arrivalLocation);
+  Ride(
+    departureLocation: fakeLocations[0], // London
+    departureDate: DateTime.now().add(Duration(hours: 10)),
+    arrivalLocation: fakeLocations[19], // Paris
+    arrivalDateTime: DateTime.now().add(Duration(hours: 9)),
+    driver: fakeUsers[1],
+    availableSeats: 1,
+    pricePerSeat: 30.0,
+  ),
 
-  // Select a random driver
-  User driver = fakeUsers[random.nextInt(fakeUsers.length)];
+  Ride(
+    departureLocation: fakeLocations[2], // Birmingham
+    departureDate: DateTime.now().add(Duration(days: 1)),
+    arrivalLocation: fakeLocations[22], // Toulouse
+    arrivalDateTime: DateTime.now().add(Duration(days: 1, hours: 4)),
+    driver: fakeUsers[2],
+    availableSeats: 2,
+    pricePerSeat: 22.5,
+  ),
 
-  // Random ride details
-  DateTime departureTime = DateTime.now()
-      .add(Duration(days: random.nextInt(10), hours: random.nextInt(24)));
-  DateTime arrivalTime = departureTime
-      .add(Duration(hours: random.nextInt(5) + 2)); // Rides take 2-6 hours
-  int availableSeats = random.nextInt(4) + 1; // Between 1 and 4 seats
-  double pricePerSeat = (random.nextDouble() * 20 + 5)
-      .roundToDouble(); // Price between 5€ and 25€
+  Ride(
+    departureLocation: fakeLocations[3], // Liverpool
+    departureDate: DateTime.now().add(Duration(days: 2)),
+    arrivalLocation: fakeLocations[23], // Nice
+    arrivalDateTime: DateTime.now().add(Duration(days: 2, hours: 6)),
+    driver: fakeUsers[3],
+    availableSeats: 3,
+    pricePerSeat: 35.0,
+  ),
 
-  return Ride(
-    departureLocation: departureLocation,
-    departureDate: departureTime,
-    arrivalLocation: arrivalLocation,
-    arrivalDateTime: arrivalTime,
-    driver: driver,
-    availableSeats: availableSeats,
-    pricePerSeat: pricePerSeat,
-  );
-});
+  Ride(
+    departureLocation: fakeLocations[4], // Leeds
+    departureDate: DateTime.now().add(Duration(days: 2, hours: 5)),
+    arrivalLocation: fakeLocations[24], // Nantes
+    arrivalDateTime: DateTime.now().add(Duration(days: 2, hours: 10)),
+    driver: fakeUsers[4],
+    availableSeats: 4,
+    pricePerSeat: 28.0,
+  ),
+
+  Ride(
+    departureLocation: fakeLocations[5], // Glasgow
+    departureDate: DateTime.now().add(Duration(days: 3)),
+    arrivalLocation: fakeLocations[25], // Strasbourg
+    arrivalDateTime: DateTime.now().add(Duration(days: 3, hours: 7)),
+    driver: fakeUsers[5],
+    availableSeats: 3,
+    pricePerSeat: 40.0,
+  ),
+
+  Ride(
+    departureLocation: fakeLocations[6], // Sheffield
+    departureDate: DateTime.now().add(Duration(days: 3, hours: 2)),
+    arrivalLocation: fakeLocations[26], // Montpellier
+    arrivalDateTime: DateTime.now().add(Duration(days: 3, hours: 8)),
+    driver: fakeUsers[0],
+    availableSeats: 2,
+    pricePerSeat: 26.0,
+  ),
+
+  Ride(
+    departureLocation: fakeLocations[7], // Bristol
+    departureDate: DateTime.now().add(Duration(days: 4)),
+    arrivalLocation: fakeLocations[27], // Bordeaux
+    arrivalDateTime: DateTime.now().add(Duration(days: 4, hours: 6)),
+    driver: fakeUsers[1],
+    availableSeats: 3,
+    pricePerSeat: 29.0,
+  ),
+
+  Ride(
+    departureLocation: fakeLocations[8], // Edinburgh
+    departureDate: DateTime.now().add(Duration(days: 4, hours: 4)),
+    arrivalLocation: fakeLocations[28], // Lille
+    arrivalDateTime: DateTime.now().add(Duration(days: 4, hours: 9)),
+    driver: fakeUsers[2],
+    availableSeats: 4,
+    pricePerSeat: 27.5,
+  ),
+
+  Ride(
+    departureLocation: fakeLocations[9], // Leicester
+    departureDate: DateTime.now().add(Duration(days: 5)),
+    arrivalLocation: fakeLocations[29], // Rennes
+    arrivalDateTime: DateTime.now().add(Duration(days: 5, hours: 5)),
+    driver: fakeUsers[3],
+    availableSeats: 3,
+    pricePerSeat: 24.0,
+  ),
+
+  // Continue the same pattern until 50 rides
+];
